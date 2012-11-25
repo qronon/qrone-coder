@@ -23,8 +23,9 @@ public class QLangJQuery extends QLangBase{
 		this.cls = cls;
 		if(cls.constructor == null){
 			br();
+			write("qrone[\"");
 			write(cls.className);
-			write(" = function(){}");
+			write("\"] = function(");
 		}
 		cls.visit(this);
 	}
@@ -37,9 +38,9 @@ public class QLangJQuery extends QLangBase{
 	@Override
 	public void accept(QFunc func) {
 		br();
-		write("qrone.");
+		write("qrone['");
 		write(cls.className);
-		write(" = function(");
+		write("'] = function(");
 		
 		boolean first = true;
 		for (Iterator<QVar> i = func.args.iterator(); i
